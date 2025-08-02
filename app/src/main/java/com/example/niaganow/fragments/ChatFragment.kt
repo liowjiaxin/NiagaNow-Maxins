@@ -53,7 +53,7 @@ class ChatFragment : BottomSheetDialogFragment() {
         val body = json.toString().toRequestBody("application/json".toMediaTypeOrNull())
 
         val request = Request.Builder()
-            .url("http://10.0.2.2:8000/chat") // Localhost for Android emulator
+            .url("http://10.100.240.9:5000/chat") // Localhost for Android emulator
             .post(body)
             .build()
 

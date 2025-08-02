@@ -46,18 +46,25 @@
                     android:textSize="16sp"
                     android:drawablePadding="8dp"
                     android:tint="#D32F2F"
-                 />
+                    />
 
-                <TextView
+                <EditText
+                    android:id="@+id/loan_amount_input"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/complete_our_quick_assessment_to_see_if_you_qualify_for_a_business_loan"
-                    android:textColor="#4A4A4A"
-                    android:textSize="14sp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="12dp" />
+                    android:layout_height="48dp"
+                    android:inputType="numberDecimal"
+                    android:hint="Loan Amount (e.g, 10000)"
+                    android:textSize="15sp"/>
+
+                <EditText
+                    android:id="@+id/tenure_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Tenure in Years (e.g. 3)"
+                    android:textSize="15sp"/>
 
                 <Button
+                    android:id="@+id/predict_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/start_eligibility_check"
@@ -66,6 +73,13 @@
                     android:backgroundTint="#D32F2F"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="8dp" />
+
+                <TextView
+                    android:id="@+id/result_text"
+                    android:text="Result will show here"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="24dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

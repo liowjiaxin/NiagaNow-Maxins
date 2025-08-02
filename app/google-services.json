@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "571074013973",
+    "project_id": "niaganow-maxins",
+    "storage_bucket": "niaganow-maxins.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571074013973:android:cacdfab43edc01e0f5d71c",
+        "android_client_info": {
+          "package_name": "com.example.niaganow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCykBEh-hj3eXE1dqKCOwnot9dv7jU6PQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
