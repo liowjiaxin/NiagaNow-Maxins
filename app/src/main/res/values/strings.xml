@@ -11,4 +11,12 @@
     <string name="daily">Daily</string>
     <string name="weekly">Weekly</string>
     <string name="monthly">Monthly</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="view_and_manage_your_transaction_history">View and manage your transaction history</string>
+    <string name="export_pdf">Export PDF</string>
+    <string name="id">ID</string>
+    <string name="date">Date</string>
+    <string name="description">Description</string>
+    <string name="amount">Amount</string>
+    <string name="status">Status</string>
 </resources>
