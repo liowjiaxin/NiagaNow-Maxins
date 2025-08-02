@@ -1,9 +1,12 @@
-package com.example.niaganow
+package com.example.niaganow.fragments
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import com.example.niaganow.databinding.DashboardBinding
+import androidx.fragment.app.Fragment
+import com.example.niaganow.R
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -11,42 +14,40 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 
-class Dashboard : AppCompatActivity() {
+class Dashboard : Fragment() {
 
-    private lateinit var binding: DashboardBinding
+    private lateinit var barChart: BarChart
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.dashboard, container, false)
 
-        // ✅ View Binding setup
-        binding = DashboardBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        // ✅ Find BarChart manually
+        barChart = view.findViewById(R.id.peakBarChart)
 
         setupBarChart()
+
+        return view
     }
 
     private fun setupBarChart() {
-        val barChart: BarChart = binding.peakBarChart
-
-        // ✅ Step 1: Create entries
         val entries = listOf(
-            BarEntry(0f, 120f),  // 8am
-            BarEntry(1f, 150f),  // 10am
-            BarEntry(2f, 80f),   // 12pm
-            BarEntry(3f, 200f),  // 2pm
-            BarEntry(4f, 170f),  // 4pm
+            BarEntry(0f, 120f),
+            BarEntry(1f, 150f),
+            BarEntry(2f, 80f),
+            BarEntry(3f, 200f),
+            BarEntry(4f, 170f)
         )
 
-        // ✅ Step 2: Create DataSet with color
         val dataSet = BarDataSet(entries, "Transactions")
-        dataSet.color = ContextCompat.getColor(this, R.color.teal_700)
+        dataSet.color = ContextCompat.getColor(requireContext(), R.color.teal_700)
 
-        // ✅ Step 3: Prepare BarData
         val barData = BarData(dataSet)
         barData.barWidth = 0.9f
         barData.setValueTextSize(12f)
 
-        // ✅ Step 4: Configure BarChart
         barChart.apply {
             data = barData
             setFitBars(true)
@@ -57,9 +58,9 @@ class Dashboard : AppCompatActivity() {
             axisRight.isEnabled = false
             axisLeft.axisMinimum = 0f
 
-            // X-Axis settings
             xAxis.apply {
-                valueFormatter = IndexAxisValueFormatter(listOf("8am", "10am", "12pm", "2pm", "4pm"))
+                valueFormatter =
+                    IndexAxisValueFormatter(listOf("8am", "10am", "12pm", "2pm", "4pm"))
                 position = XAxis.XAxisPosition.BOTTOM
                 setDrawGridLines(false)
                 granularity = 1f

@@ -1,31 +1,38 @@
-package com.example.niaganow
+package com.example.niaganow.fragments
 
 import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.RectF
 import android.os.Bundle
-import android.text.TextUtils
-import android.widget.Button
-import android.widget.EditText
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.niaganow.R
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.journeyapps.barcodescanner.BarcodeEncoder
 
-class QRActivity: AppCompatActivity() {
+class QRFragment : Fragment() {
 
     private lateinit var qrCodeIV: ImageView
     private lateinit var backButton: ImageView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_qr)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_qr, container, false)
 
-        qrCodeIV = findViewById(R.id.idIVQrcode)
-        backButton = findViewById(R.id.backBtn)
+        qrCodeIV = view.findViewById(R.id.idIVQrcode)
+        backButton = view.findViewById(R.id.backBtn)
 
         backButton.setOnClickListener {
-            finish()
+            // Optional: Handle fragment pop or activity back
+            activity?.onBackPressed()
         }
 
         generateQRCode(
@@ -37,6 +44,8 @@ class QRActivity: AppCompatActivity() {
             ),
             merchantName = "Johnson Johnson SDN BHD"
         )
+
+        return view
     }
 
     private fun generateQRCode(text: String, merchantName: String) {
@@ -45,19 +54,19 @@ class QRActivity: AppCompatActivity() {
         val captionHeight = 140
         val merchantNameHeight = 100
         val cornerRadius = 80f
-        val pinkColor = android.graphics.Color.parseColor("#ED267C")
+        val pinkColor = Color.parseColor("#ED267C")
 
         try {
             val barcodeEncoder = BarcodeEncoder()
             val baseQR = barcodeEncoder.encodeBitmap(text, BarcodeFormat.QR_CODE, qrSize, qrSize)
 
-            // Create pink QR bitmap by replacing black with pink
             val pinkQR = Bitmap.createBitmap(qrSize, qrSize, Bitmap.Config.ARGB_8888)
             for (x in 0 until qrSize) {
                 for (y in 0 until qrSize) {
-                    pinkQR.setPixel(x, y,
-                        if (baseQR.getPixel(x, y) == android.graphics.Color.BLACK) pinkColor
-                        else android.graphics.Color.WHITE
+                    pinkQR.setPixel(
+                        x, y,
+                        if (baseQR.getPixel(x, y) == Color.BLACK) pinkColor
+                        else Color.WHITE
                     )
                 }
             }
@@ -65,26 +74,22 @@ class QRActivity: AppCompatActivity() {
             val totalHeight = qrSize + cardPadding * 2 + merchantNameHeight + captionHeight
             val totalWidth = qrSize + cardPadding * 2
             val finalBitmap = Bitmap.createBitmap(totalWidth, totalHeight, Bitmap.Config.ARGB_8888)
-            val canvas = android.graphics.Canvas(finalBitmap)
-            val paint = android.graphics.Paint().apply { isAntiAlias = true }
+            val canvas = Canvas(finalBitmap)
+            val paint = Paint().apply { isAntiAlias = true }
 
-            // Draw pink full background
             canvas.drawColor(pinkColor)
 
-            // Draw white rounded card for QR
-            paint.color = android.graphics.Color.WHITE
-            val cardRect = android.graphics.RectF(
+            paint.color = Color.WHITE
+            val cardRect = RectF(
                 cardPadding.toFloat(), cardPadding.toFloat(),
                 (cardPadding + qrSize).toFloat(), (cardPadding + qrSize).toFloat()
             )
             canvas.drawRoundRect(cardRect, cornerRadius, cornerRadius, paint)
 
-            // Draw pink QR code centered on card
             canvas.drawBitmap(pinkQR, cardPadding.toFloat(), cardPadding.toFloat(), null)
 
-            // Draw Merchant Name (below QR)
-            paint.color = android.graphics.Color.BLACK
-            paint.textAlign = android.graphics.Paint.Align.CENTER
+            paint.color = Color.BLACK
+            paint.textAlign = Paint.Align.CENTER
             paint.textSize = 50f
             paint.isFakeBoldText = true
             canvas.drawText(
@@ -94,8 +99,7 @@ class QRActivity: AppCompatActivity() {
                 paint
             )
 
-            // Draw bottom caption
-            paint.color = android.graphics.Color.WHITE
+            paint.color = Color.WHITE
             paint.textSize = 42f
             paint.isFakeBoldText = false
             canvas.drawText(
@@ -105,7 +109,6 @@ class QRActivity: AppCompatActivity() {
                 paint
             )
 
-            // Set image to ImageView
             qrCodeIV.setImageBitmap(finalBitmap)
 
         } catch (e: WriterException) {
@@ -113,13 +116,12 @@ class QRActivity: AppCompatActivity() {
         }
     }
 
-
     private fun generateFakeDuitNowQR(
         payeeName: String,
         merchantId: String,
         amount: Double,
-        reference: String)
-    : String {
+        reference: String
+    ): String {
         return """
             DUITNOW|NAME:$payeeName
             MERCHANT_ID:$merchantId

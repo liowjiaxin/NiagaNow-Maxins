@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.niaganow.QRActivity
+import com.example.niaganow.fragments.QRFragment
 import com.example.niaganow.R
 import com.example.niaganow.databinding.FragmentSignInBinding
 import com.example.niaganow.viewmodel.LoginViewModel
@@ -46,7 +46,7 @@ class SignInFragment : Fragment() {
             } else {
                 Toast.makeText(context, "Invalid credentials", Toast.LENGTH_SHORT).show()
             }
-            val intent = Intent(requireContext(), QRActivity::class.java)
+            val intent = Intent(requireContext(), QRFragment::class.java)
             startActivity(intent)
         }
         return binding.root
