@@ -24,6 +24,6 @@
 
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/profile"
+        android:icon="@drawable/outline_emoji_people_24"
         android:title="User Profile" />
 </menu>

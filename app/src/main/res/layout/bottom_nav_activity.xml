@@ -25,11 +25,22 @@
         android:background="?android:attr/windowBackground"
         app:menu="@menu/dashboard_bottom_nav_menu"
         app:labelVisibilityMode="unlabeled"
-        app:itemIconSize="50dp"
+        app:itemIconSize="40dp"
         app:itemIconTint="@color/black"
         app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/chatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/outline_chat_bubble_24"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:backgroundTint="@color/red"
+        android:contentDescription="Chat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
