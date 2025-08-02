@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.niaganow.fragments.ChatFragment
 
 
 class BottomNavActivity : AppCompatActivity() {
@@ -12,12 +14,12 @@ class BottomNavActivity : AppCompatActivity() {
         setContentView(R.layout.bottom_nav_activity)
 
         val navView = findViewById<BottomNavigationView>(R.id.bottomNav)
+        val chatButton = findViewById<FloatingActionButton>(R.id.chatButton)
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
 
-        // Handle bottom nav manually
         navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_dashboard -> {
@@ -25,7 +27,6 @@ class BottomNavActivity : AppCompatActivity() {
                         navController.navigate(R.id.dashboardFragment)
                     }
                     true
-
                 }
                 R.id.nav_loans -> {
                     if (navController.currentDestination?.id != R.id.loansFragment) {
@@ -45,21 +46,24 @@ class BottomNavActivity : AppCompatActivity() {
                     }
                     true
                 }
-
                 R.id.nav_profile -> {
                     if (navController.currentDestination?.id != R.id.userProfileFragment) {
                         navController.navigate(R.id.userProfileFragment)
                     }
                     true
                 }
-
                 else -> false
             }
         }
 
-        // Optional: Keep nav selected when navigating
+        // Keep nav selected when navigating
         navController.addOnDestinationChangedListener { _, destination, _ ->
             navView.menu.findItem(destination.id)?.isChecked = true
+        }
+
+        // Floating chat button listener
+        chatButton.setOnClickListener {
+            ChatFragment().show(supportFragmentManager, "ChatFragment")
         }
     }
 }
