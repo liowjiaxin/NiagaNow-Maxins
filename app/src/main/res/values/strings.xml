@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NiagaNow</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="welcome_back_mary_here_s_your_business_overview">Welcome back, Mary! Here\'s your business overview.</string>
+    <string name="us_english">us English</string>
+    <string name="notification_bell">Notification bell</string>
 </resources>
