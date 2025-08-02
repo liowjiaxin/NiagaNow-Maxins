@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/dashboard_foreground"
+        android:title="Dashboard" />
+
+
+    <item
+        android:id="@+id/nav_loans"
+        android:icon="@drawable/notepad_foreground"
+        android:title="Loans" />
+
+    <item
+        android:id="@+id/nav_qr"
+        android:icon="@drawable/qrcode_foreground"
+        android:title="QR" />
+
+    <item
+        android:id="@+id/nav_history"
+        android:icon="@drawable/history_foreground"
+        android:title="History" />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile"
+        android:title="User Profile" />
+</menu>

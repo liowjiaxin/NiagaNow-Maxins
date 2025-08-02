@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.niaganow.fragments.Dashboard"
+        android:label="Dashboard" />
+
+    <fragment
+        android:id="@+id/loansFragment"
+        android:name="com.example.niaganow.fragments.LoansFragment"
+        android:label="Loans" />
+
+    <fragment
+        android:id="@+id/QRFragment"
+        android:name="com.example.niaganow.fragments.QRFragment"
+        android:label="QR" />
+
+    <fragment
+        android:id="@+id/TransactionHistory"
+        android:name="com.example.niaganow.fragments.TransactionHistory"
+        android:label="TransactionHistory" />
+
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.niaganow.fragments.UserProfileFragment"
+        android:label="ProfilePage" />
+
+
+
+</navigation>

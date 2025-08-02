@@ -24,9 +24,7 @@ class Dashboard : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.dashboard, container, false)
 
-        // ✅ Find BarChart manually
         barChart = view.findViewById(R.id.peakBarChart)
-
         setupBarChart()
 
         return view
@@ -59,8 +57,9 @@ class Dashboard : Fragment() {
             axisLeft.axisMinimum = 0f
 
             xAxis.apply {
-                valueFormatter =
-                    IndexAxisValueFormatter(listOf("8am", "10am", "12pm", "2pm", "4pm"))
+                valueFormatter = IndexAxisValueFormatter(
+                    listOf("8am", "10am", "12pm", "2pm", "4pm")
+                )
                 position = XAxis.XAxisPosition.BOTTOM
                 setDrawGridLines(false)
                 granularity = 1f
