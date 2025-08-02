@@ -7,5 +7,6 @@
     <color name="colorPrimaryDark">#16E37F</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="teal_700">#018786</color>
+    <color name="grey">#6D6969</color>
 
 </resources>
