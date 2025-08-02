@@ -90,7 +90,7 @@
         android:id="@+id/businessName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Business Name"
+        android:text="Business Registration Number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailEditText"
         android:textSize="20sp"
@@ -100,7 +100,7 @@
         android:id="@+id/businessEditText"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Enter your business name"
+        android:hint="Enter your business registration number"
         app:layout_constraintTop_toBottomOf="@id/businessName"
         app:layout_constraintStart_toStartOf="parent"/>
 
