@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.niaganow.fragments.QRFragment
+import com.example.niaganow.BottomNavActivity
 import com.example.niaganow.R
 import com.example.niaganow.databinding.FragmentSignInBinding
 import com.example.niaganow.viewmodel.LoginViewModel
@@ -27,11 +27,13 @@ class SignInFragment : Fragment() {
         binding.passwordToggle.setOnClickListener {
             isPasswordVisible = !isPasswordVisible
 
-            if (isPasswordVisible){
-                binding.passwordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            if (isPasswordVisible) {
+                binding.passwordEditText.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
                 binding.passwordToggle.setImageResource(R.drawable.baseline_visibility_24)
             } else {
-                binding.passwordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                binding.passwordEditText.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                 binding.passwordToggle.setImageResource(R.drawable.baseline_visibility_off_24)
             }
 
@@ -41,14 +43,17 @@ class SignInFragment : Fragment() {
         binding.signInButton.setOnClickListener {
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
+
             if (viewModel.validateSignIn(email, password)) {
                 Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
+                val intent = Intent(requireContext(), BottomNavActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
             } else {
                 Toast.makeText(context, "Invalid credentials", Toast.LENGTH_SHORT).show()
             }
-            val intent = Intent(requireContext(), QRFragment::class.java)
-            startActivity(intent)
         }
+
         return binding.root
     }
 

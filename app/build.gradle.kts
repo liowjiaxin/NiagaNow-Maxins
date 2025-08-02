@@ -52,6 +52,10 @@ dependencies {
     implementation ("androidx.compose.material:material:1.5.1")
     implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation ("androidx.cardview:cardview:1.0.0")
+    // ✅ Add these two for Navigation Component
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+
 
 
 

@@ -19,4 +19,18 @@
     <string name="description">Description</string>
     <string name="amount">Amount</string>
     <string name="status">Status</string>
+    <string name="loan_title">Loan Title</string>
+    <string name="loan_description">Loan description</string>
+    <string name="interest_rate_5_5_8_5">Interest Rate: 5.5% - 8.5%</string>
+    <string name="max_amount_rm50_000">Max Amount: RM50,000</string>
+    <string name="tenure_12_36_months">Tenure: 12 - 36 months</string>
+    <string name="key_features">Key Features:</string>
+    <string name="no_collateral_required">✔ No collateral required</string>
+    <string name="quick_approval">✔ Quick approval</string>
+    <string name="flexible_repayment">✔ Flexible repayment</string>
+    <string name="apply_now">Apply Now</string>
+    <string name="loans">Loans</string>
+    <string name="check_your_loan_eligibility">Check Your Loan Eligibility</string>
+    <string name="complete_our_quick_assessment_to_see_if_you_qualify_for_a_business_loan">Complete our quick assessment to see if you qualify for a business loan</string>
+    <string name="start_eligibility_check">Start Eligibility Check</string>
 </resources>
