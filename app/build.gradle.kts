@@ -53,6 +53,7 @@ dependencies {
 
 
     testImplementation(libs.junit)
+    implementation(libs.mpandroidchart)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
