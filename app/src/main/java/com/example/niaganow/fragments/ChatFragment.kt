@@ -10,6 +10,7 @@ import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 
 
 class ChatFragment : BottomSheetDialogFragment() {
@@ -26,6 +27,9 @@ class ChatFragment : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Send button action
         binding.sendButton.setOnClickListener {
             val inputText = binding.messageInput.text.toString().trim()
             if (inputText.isNotBlank()) {
@@ -34,15 +38,22 @@ class ChatFragment : BottomSheetDialogFragment() {
                 sendMessageToBot(inputText)
             }
         }
+
+        // Close button action
+        binding.closeButton.setOnClickListener {
+            dismiss()  // Closes the bottom sheet dialog
+        }
     }
 
     private fun sendMessageToBot(userMessage: String) {
-        val json = JSONObject()
-        json.put("message", userMessage)
+        val json = JSONObject().apply {
+            put("message", userMessage)
+        }
 
-        val body = RequestBody.create("application/json".toMediaTypeOrNull(), json.toString())
+        val body = json.toString().toRequestBody("application/json".toMediaTypeOrNull())
+
         val request = Request.Builder()
-            .url("http://10.0.2.2:8000/chat") // Use 10.0.2.2 for Android emulator
+            .url("http://10.0.2.2:8000/chat") // Localhost for Android emulator
             .post(body)
             .build()
 
