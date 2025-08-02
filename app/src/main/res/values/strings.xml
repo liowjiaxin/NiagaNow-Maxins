@@ -4,4 +4,11 @@
     <string name="welcome_back_mary_here_s_your_business_overview">Welcome back, Mary! Here\'s your business overview.</string>
     <string name="us_english">us English</string>
     <string name="notification_bell">Notification bell</string>
+    <string name="rm_1_245_25">RM 1,245.25</string>
+    <string name="income_overview">Income Overview</string>
+    <string name="previous_daily_rm_1_180_50">Previous Daily: RM 1,180.50</string>
+    <string name="peak_transaction_times">Peak Transaction Times</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
 </resources>
